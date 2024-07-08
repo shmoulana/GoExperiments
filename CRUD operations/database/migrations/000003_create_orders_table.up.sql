@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Orders (
+    Order_ID SERIAL PRIMARY KEY,
+    Ticket_ID INT NOT NULL,
+    Created_at_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Menu_Item VARCHAR(255) NOT NULL,
+    Quantity INT NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (Ticket_ID) REFERENCES Tickets(Ticket_ID)
+);

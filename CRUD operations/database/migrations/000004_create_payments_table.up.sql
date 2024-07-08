@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS Payments (
+    Payment_ID SERIAL PRIMARY KEY,
+    Ticket_ID INT NOT NULL,
+    Amount DECIMAL(10, 2) NOT NULL,
+    Created_at_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Method VARCHAR(255) NOT NULL,
+    FOREIGN KEY (Ticket_ID) REFERENCES Tickets(Ticket_ID)
+);

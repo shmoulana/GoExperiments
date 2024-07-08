@@ -95,38 +95,40 @@ go-gin-postgres/
 
 ```
 
+## API Documentation
 
+## Authentication
 
-## API Routes
-Here are the API routes provided by this application:
+### Login
+- `POST /login` - Authenticates a user and provides a JWT token
 
-### User Routes
+## User Routes
+
 - `POST /users` - Create a new user
 - `GET /users` - Get a list of all users
-- `GET /users/:id` - Get details of a specific user
-- `PUT /users/:id` - Update a specific user
-- `DELETE /users/:id` - Delete a specific user
+- `GET /users/:id` - Retrieve a user by their ID
+- `PUT /users/:id` - Update a user by their ID
+- `DELETE /users/:id` - Delete a user by their ID
+- `GET /users/range/:start_id/:end_id` - Retrieve users within a range of IDs
+- `GET /users/byname/:name` - Retrieve a user by their name
 
-### Ticket Routes
-- `POST /tickets` - Create a new ticket
-- `GET /tickets` - Get a list of all tickets
-- `GET /tickets/:id` - Get details of a specific ticket
-- `PUT /tickets/:id` - Update a specific ticket
-- `DELETE /tickets/:id` - Delete a specific ticket
+## Ticket Routes
 
-### Order Routes
-- `POST /orders` - Create a new order
-- `GET /orders` - Get a list of all orders
-- `GET /orders/:id` - Get details of a specific order
-- `PUT /orders/:id` - Update a specific order
-- `DELETE /orders/:id` - Delete a specific order
+- `GET /tickets/date/:start_date/:end_date` - Retrieve tickets within a date range
+- `GET /tickets/date/time/:start_date/:end_date` - Retrieve tickets within a date and time range
+- `GET /tickets/:user_id` - Retrieve tickets by user ID
+- `GET /tickets/payment/:status` - Retrieve tickets by payment status
+- `GET /records/date/:date_created` - Retrieve records by the ticket's date of creation
+- `GET /records/:date/:start_time/:end_time` - Retrieve records within a specific date and time range
 
-### Payment Routes
-- `POST /payments` - Create a new payment
-- `GET /payments` - Get a list of all payments
-- `GET /payments/:id` - Get details of a specific payment
-- `PUT /payments/:id` - Update a specific payment
-- `DELETE /payments/:id` - Delete a specific payment
+## Order Routes
+
+- `GET /orders/date/:start_date/:end_date` - Retrieve orders within a date range
+
+## Payment Routes
+
+- `GET /payments/date/:start_date/:end_date` - Retrieve payments within a date range
+
 
 ## Seeding Data
 To seed the database with initial data, use the provided seeder script.

@@ -7,10 +7,10 @@ A RESTful API built with Go, Gin framework, and PostgreSQL.
 - [Features](#features)
 - [Installation](#installation)
 - [Database Migrations](#database-migrations)
+- [Seeding Data](#seeding-data)
 - [Running the Application](#running-the-application)
 - [Project Structure](#project-structure)
 - [API Routes](#api-routes)
-- [Seeding Data](#seeding-data)
 - [Contributing](#contributing)
 
 ## Introduction
@@ -48,6 +48,33 @@ To apply the database migrations, use the following commands:
     ```sh
     migrate -path ./database/migrations -database 'postgres://user:password@localhost:5432/dbname?sslmode=disable' down 1
     ```
+## Seeding Data
+To seed the database with initial data, use the provided seeder script.
+
+### Prerequisites
+Ensure your database is set up and configured.
+
+### Running the Seeder
+1. Run the seeder script:
+    ```sh
+    go run seeder/seed.go
+    ```
+
+### Seeder Script (`seeder/seed.go`)
+Here is a brief overview of what the seeder script does:
+
+- Connects to the PostgreSQL database.
+- Inserts initial data for users, tickets, orders, and payments tables.
+
+### Example Seed Data
+The seed data might look something like this:
+
+#### Users
+```sql
+INSERT INTO users (id, name, email, password) VALUES
+(1, 'John Doe', 'john.doe@example.com', 'hashedpassword'),
+(2, 'Jane Smith', 'jane.smith@example.com', 'hashedpassword');
+```
 
 ## Running the Application
 Start the application using the following command:
@@ -129,34 +156,6 @@ go-gin-postgres/
 
 - `GET /payments/date/:start_date/:end_date` - Retrieve payments within a date range
 
-
-## Seeding Data
-To seed the database with initial data, use the provided seeder script.
-
-### Prerequisites
-Ensure your database is set up and configured.
-
-### Running the Seeder
-1. Run the seeder script:
-    ```sh
-    go run seeder/seed.go
-    ```
-
-### Seeder Script (`seeder/seed.go`)
-Here is a brief overview of what the seeder script does:
-
-- Connects to the PostgreSQL database.
-- Inserts initial data for users, tickets, orders, and payments tables.
-
-### Example Seed Data
-The seed data might look something like this:
-
-#### Users
-```sql
-INSERT INTO users (id, name, email, password) VALUES
-(1, 'John Doe', 'john.doe@example.com', 'hashedpassword'),
-(2, 'Jane Smith', 'jane.smith@example.com', 'hashedpassword');
-```
 
 
 ## Contributing

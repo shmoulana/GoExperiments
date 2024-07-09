@@ -38,15 +38,25 @@ This project is a sample RESTful API built using the Go programming language and
 
 ## Database Migrations
 To apply the database migrations, use the following commands:
+### Install migrations
+- Install Scoop
+   ```sh
+   Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+   iwr -userb get.scoop.sh | iex
+   ```
+- Install Migrate
+   ```sh
+   scoop install migrate
+   ```
 
 - Apply all migrations:
     ```sh
-    migrate -path ./database/migrations -database 'postgres://user:password@localhost:5432/dbname?sslmode=disable' up
+    migrate -database "postgres://postgres:12345678@localhost/myapi?sslmode=disable" -source file://database/migrations up
     ```
 
 - Rollback the last migration:
     ```sh
-    migrate -path ./database/migrations -database 'postgres://user:password@localhost:5432/dbname?sslmode=disable' down 1
+    migrate -database "postgres://postgres:12345678@localhost/myapi?sslmode=disable" -path database/migrations down
     ```
 
 ## Running the Application
